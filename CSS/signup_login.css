@@ -1,0 +1,303 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Ensure Poppins is linked in your HTML, or use a fallback */
+    background: linear-gradient(135deg, #0f1f1d 0%, #061210 50%, #0f1f1d 100%); /* Dark, sophisticated green-black gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #f0f0f0; /* Light text for contrast */
+    overflow: hidden; /* Prevent scrollbars during transition */
+    position: relative; /* For potential background effects */
+}
+
+/* Subtle background particles/blobs (optional) */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+body::before {
+    background-color: #28a745; /* Green blob */
+    top: -50px;
+    left: -50px;
+}
+
+body::after {
+    background-color: #007bff; /* Blue blob */
+    bottom: -50px;
+    right: -50px;
+}
+
+/* Auth Page Container */
+.auth-page-container {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Auth Card (the main box) */
+.auth-card {
+    background-color: rgba(255, 255, 255, 0.98); /* Near-white, slightly transparent */
+    border-radius: 15px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    min-height: 520px; /* Slightly increased min-height for better balance */
+    padding-bottom: 20px;
+    color: #333; /* Dark text inside card */
+    animation: fadeInScale 0.7s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* Tabs for Login/Signup */
+.auth-tabs {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 25px; /* More space below tabs */
+    background-color: #f0f0f0; /* Slightly off-white for tab background */
+    padding: 0 10px; /* Internal padding for tab spacing */
+}
+
+.tab-button {
+    flex: 1;
+    padding: 18px 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #777; /* Default tab color */
+    transition: all 0.3s ease;
+    position: relative;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Position under the border */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+    color: #28a745; /* Active tab text: Green */
+    background-color: #ffffff;
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05); /* Subtle shadow for active tab */
+    z-index: 1;
+}
+
+.tab-button.active::after {
+    background-color: #28a745; /* Active tab underline: Green */
+}
+
+/* Forms Wrapper - The Sliding Mechanism */
+.forms-wrapper {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 200%;
+    height: auto;
+}
+
+/* Slide to show signup form */
+.auth-card.signup-active .forms-wrapper {
+    transform: translateX(-50%);
+}
+
+/* Auth Form General Styles */
+.auth-form {
+    width: 50%;
+    flex-shrink: 0;
+    padding: 0 40px;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.auth-form:not(.active) {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.auth-form h2 {
+    text-align: center;
+    color: #28a745; /* Heading color: Green */
+    margin-bottom: 30px; /* Increased space */
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 22px; /* Increased space between form groups */
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    color: #333; /* Ensure input text is dark */
+}
+
+.form-group input:focus {
+    border-color: #28a745; /* Focus border: Green */
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25); /* Focus shadow: Green */
+}
+
+/* Validation Error Styling */
+.form-group input.error {
+    border-color: #dc3545; /* Red for errors */
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    height: 18px;
+    line-height: 1;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.error-message:empty {
+    height: 0;
+    margin-top: 0;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 16px; /* Slightly larger padding */
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    margin-top: 30px; /* More space above button */
+    outline: none;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.green-button {
+    background-color: #28a745; /* Primary green button */
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+.green-button:hover {
+    background-color: #218838;
+}
+
+.blue-button {
+    background-color: #007bff; /* Secondary blue button */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+.blue-button:hover {
+    background-color: #0056b3;
+}
+
+.form-switch-text {
+    text-align: center;
+    margin-top: 25px; /* More space below button */
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.form-switch-text a {
+    color: #007bff; /* Blue for switch links */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.form-switch-text a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 550px) {
+    .auth-card {
+        width: 100%;
+        max-width: none;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: initial; /* Remove min-height on full screen mobile */
+    }
+
+    .auth-form {
+        padding: 0 20px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .tab-button {
+        font-size: 1rem;
+        padding: 15px 10px;
+    }
+
+    body::before,
+    body::after {
+        display: none; /* Hide background blobs on small screens */
+    }
+}
+
+@media (max-width: 400px) {
+    .auth-form {
+        padding: 0 15px;
+    }
+}

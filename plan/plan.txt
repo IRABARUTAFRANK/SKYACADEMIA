@@ -1,0 +1,9 @@
+The apln for teh databse schema:
+
+     16 entities 
+     namely: schoo, teahcers, students, classes, courses, mark, attendance, discipline, conferencing, ai
+
+
+For school registration
+    OTP passowrd
+    status in the school - to control the status whether published, poending, aapplied, deactivated like these

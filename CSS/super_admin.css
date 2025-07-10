@@ -1,0 +1,760 @@
+/* Base Styles & Typography (Your existing code) */
+:root {
+    --primary-green: #28a745;
+    --primary-green-dark: #1e7e34;
+    --primary-blue: #007bff;
+    --primary-blue-dark: #0056b3;
+    --sidebar-bg: #2c3e50; /* Dark blue-grey for sidebar */
+    --topbar-bg: #ffffff;
+    --body-bg: #f4f7f6; /* Light, subtle background */
+    --card-bg: #ffffff;
+    --text-color-dark: #333;
+    --text-color-light: #f0f0f0;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --shadow-deep: rgba(0, 0, 0, 0.2);
+    --table-header-bg: #343a40; /* Using a darker tone for table header */
+    --table-stripe-odd: #fefefe; /* Very subtle stripe */
+    --table-stripe-even: #f9f9f9; /* Another subtle stripe */
+    --table-hover-bg: #e2f2ff; /* Light blue on hover */
+    --action-edit: var(--primary-blue);
+    --action-delete: #dc3545; /* Red */
+    --status-activated: var(--primary-green);
+    --status-pending: #ffc107;
+    --status-rejected: var(--action-delete);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--body-bg);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-blue-dark);
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+/* --- Dashboard Container (CSS Grid Layout) --- */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "sidebar topbar"
+        "sidebar main";
+    min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color-light);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px var(--shadow-medium);
+    transition: all 0.3s ease;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.sidebar-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.sidebar-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.sidebar-nav a i {
+    margin-right: 15px;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-nav a .nav-count {
+    background-color: var(--primary-green);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: auto;
+    font-weight: 600;
+}
+
+.sidebar-nav li.active a,
+.sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--primary-green);
+    border-left-color: var(--primary-green);
+}
+
+.sidebar-nav li.active a .nav-count {
+    background-color: #fff;
+    color: var(--primary-green);
+}
+
+/* --- Top Bar / Header --- */
+.topbar {
+    grid-area: topbar;
+    background-color: var(--topbar-bg);
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    z-index: 1000;
+}
+
+.sidebar-toggle-btn {
+    font-size: 1.5rem;
+    color: var(--text-color-dark);
+    margin-right: 20px;
+    display: none;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-right: auto;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    padding: 8px 15px;
+    background-color: var(--body-bg);
+    transition: all 0.3s ease;
+}
+.filter_search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    padding: 8px 15px;
+    background-color: var(--body-bg);
+    transition: all 0.3s ease;
+    width: 40%;
+    float: right;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.filter_search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding-right: 25px;
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+}
+.filter_search i {
+    position: absolute;
+    right: 15px;
+    color: #999;
+}
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding-right: 25px;
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+}
+
+.search-box i {
+    position: absolute;
+    right: 15px;
+    color: #999;
+}
+
+.search-box:focus-within {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+.user-profile i.bi-person-circle {
+    font-size: 2.5em;
+    color: greenyellow;
+    position: relative;
+    cursor: pointer;
+}
+.user-profile i.fa-bell {
+    font-size: 2.3rem;
+    color: #666;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-profile .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+    min-width: 20px;
+    text-align: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+.user-profile span {
+    font-weight: 500;
+    color: var(--text-color-dark);
+}
+
+/* --- Main Dashboard Content --- */
+.main-content-wrapper {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px;
+    overflow-y: auto;
+}
+
+/* Base styles for all dashboard-sections (cards) */
+.dashboard-section {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px var(--shadow-light);
+    margin-bottom: 30px; /* Add margin bottom for spacing between sections */
+}
+
+/* --- Dashboard Section Heading (Specific to this design) --- */
+.dashboard-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-color-dark);
+    font-size: 2.2rem; /* Larger font for section titles */
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+    /* Remove the default border-bottom from your existing .dashboard-section h2 */
+    border-bottom: none !important;
+}
+
+.dashboard-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-blue); /* Use primary blue for underline */
+    border-radius: 2px;
+}
+
+
+/* --- Overview Stats Cards (Your existing code) --- */
+.overview-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.stat-card .icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-right: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.icon-circle.bg-green { background-color: var(--primary-green); }
+.icon-circle.bg-blue { background-color: var(--primary-blue); }
+.icon-circle.bg-orange { background-color: var(--status-pending); } /* Using existing variable */
+.icon-circle.bg-purple { background-color: #6f42c1; }
+
+.stat-card .card-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card .stat-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-color-dark);
+}
+
+.stat-card .stat-label {
+    font-size: 0.9rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.stat-card .stat-growth {
+    margin-left: auto;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-growth.up { color: var(--primary-green); }
+.stat-growth.down { color: var(--action-delete); }
+
+
+/* --- Styles for Latest School Applications Table --- */
+
+.styled-table-container {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners on table */
+    box-shadow: 0 5px 20px var(--shadow-medium); /* Stronger shadow for the table itself */
+    border: 1px solid var(--border-color);
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    border: none !important; /* Override Bootstrap's table-bordered */
+}
+
+.styled-table thead.table-dark {
+    background-color: var(--table-header-bg); /* Use new variable */
+    color: var(--text-color-light);
+    border-bottom: none;
+}
+
+.styled-table th {
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border: none;
+    vertical-align: middle;
+}
+
+.styled-table tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.styled-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: var(--table-stripe-odd);
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: var(--table-stripe-even);
+}
+
+/* --- Hover Effect for Table Rows --- */
+.styled-table tbody tr:hover {
+    background-color: var(--table-hover-bg);
+    transform: scale(1.005);
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.15); /* Keep a blue tint for hover shadow */
+    z-index: 1;
+    position: relative;
+}
+
+.styled-table td {
+    padding: 12px 20px;
+    vertical-align: middle;
+    border: none;
+    font-size: 0.9rem;
+    color: var(--text-color-dark);
+}
+
+/* --- Action Buttons Styling (Reused from your existing .action-btn, but with specific table overrides) --- */
+.styled-table .action-btn { /* Target buttons specifically within the styled table */
+    background: none; /* Ensure no background */
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+}
+
+.styled-table .action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.styled-table .edit-btn {
+    color: var(--action-edit);
+}
+
+.styled-table .edit-btn:hover {
+    color: #fff;
+    background-color: var(--action-edit);
+}
+
+.styled-table .delete-btn {
+    color: var(--action-delete);
+}
+
+.styled-table .delete-btn:hover {
+    color: #fff;
+    background-color: var(--action-delete);
+}
+
+/* --- Status Badges (Using PHP to add classes for better CSS control) --- */
+/* If you want colors based on status, modify your PHP to output a class:
+   e.g., <td class="status-<?php echo strtolower($row['SchoolStatus']); ?>">
+   Then CSS:
+*/
+.styled-table td.status-activated {
+    color: var(--status-activated);
+    font-weight: 600;
+}
+.styled-table td.status-pending {
+    color: var(--status-pending);
+    font-weight: 600;
+}
+.styled-table td.status-rejected {
+    color: var(--status-rejected);
+    font-weight: 600;
+}
+/* For the direct :nth-child approach (less robust): */
+/*
+.styled-table td:nth-child(8) { // Assuming 'Status' is the 8th column
+    font-weight: 600;
+}
+.styled-table td:nth-child(8):contains("Activated") { color: var(--status-activated); }
+.styled-table td:nth-child(8):contains("Pending") { color: var(--status-pending); }
+.styled-table td:nth-child(8):contains("Rejected") { color: var(--status-rejected); }
+*/
+
+
+/* --- Footer Actions (View All / Show Less Buttons) --- */
+.table-footer-actions {
+    padding: 20px;
+    background-color: var(--body-bg); /* Use body-bg or a lighter variant */
+    border-top: 1px solid var(--border-color);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.custom-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-light);
+    text-decoration: none;
+}
+
+.custom-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--shadow-medium);
+}
+
+.btn-primary.custom-btn {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: #fff;
+}
+.btn-primary.custom-btn:hover {
+    background-color: var(--primary-blue-dark);
+    border-color: var(--primary-blue-dark);
+}
+
+.btn-secondary.custom-btn {
+    background-color: #6c757d; /* Keep Bootstrap grey for secondary */
+    border-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary.custom-btn:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}
+
+/* --- Responsive Design (Media Queries) --- */
+
+@media (max-width: 1024px) {
+    /* Your existing media queries for dashboard-container, sidebar, topbar etc. */
+    .dashboard-container {
+        grid-template-columns: 200px 1fr;
+    }
+    .sidebar-title {
+        font-size: 1.2rem;
+    }
+    .sidebar-nav a {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+    .topbar {
+        padding: 15px 20px;
+    }
+    .page-title {
+        font-size: 1.6rem;
+    }
+    .topbar-actions {
+        gap: 20px;
+    }
+    .user-profile span {
+        display: none;
+    }
+    /* Specific for tables on smaller screens */
+    .styled-table th, .styled-table td {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+    .styled-table .action-btn {
+        font-size: 1rem;
+        margin: 0 2px;
+    }
+    .table-footer-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .custom-btn {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Your existing media queries for dashboard-container, sidebar, topbar etc. */
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+            "topbar"
+            "sidebar"
+            "main";
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding-bottom: 0;
+        box-shadow: 0 2px 10px var(--shadow-medium);
+        overflow-x: hidden;
+        max-height: 70px;
+    }
+
+    .sidebar.collapsed {
+        max-height: 70px;
+    }
+
+    .sidebar-header {
+        padding-bottom: 15px;
+        justify-content: center;
+        border-bottom: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: var(--sidebar-bg);
+        z-index: 10;
+    }
+
+    .sidebar-nav {
+        display: none;
+        margin-top: 70px;
+        transition: opacity 0.3s ease;
+    }
+
+    .sidebar.active .sidebar-nav {
+        display: block;
+    }
+
+    .sidebar-toggle-btn {
+        display: block;
+        margin-right: 0;
+    }
+
+    .topbar {
+        justify-content: space-between;
+    }
+
+    .topbar-actions {
+        flex-grow: 1;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+
+    .page-title {
+        display: none;
+    }
+
+    .search-box {
+        max-width: 180px;
+        padding: 5px 10px;
+    }
+    .search-box input {
+        font-size: 0.85rem;
+    }
+    .user-profile i.fa-bell {
+        font-size: 1.1rem;
+    }
+    .user-avatar {
+        width: 35px;
+        height: 35px;
+    }
+
+    .main-content-wrapper { /* Changed from .dashboard-content to .main-content-wrapper */
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .dashboard-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+
+    .overview-stats,
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .stat-card .icon-circle {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .stat-card .card-details {
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .stat-card .stat-growth {
+        margin-left: 0;
+    }
+
+    .recent-posts table { /* Adjust if you use .recent-posts for this table */
+        min-width: 600px;
+    }
+}
+
+/* JavaScript class for mobile sidebar toggle */
+.dashboard-container.sidebar-open .sidebar {
+    max-height: 100vh;
+    box-shadow: 2px 0 10px var(--shadow-deep);
+}
+
+.dashboard-container.sidebar-open .sidebar-nav {
+    display: block;
+}

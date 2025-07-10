@@ -1,0 +1,576 @@
+
+/* Base Styles & Typography */
+:root {
+    --primary-green: #28a745;
+    --primary-green-dark: #1e7e34;
+    --primary-blue: #007bff;
+    --primary-blue-dark: #0056b3;
+    --sidebar-bg: #2c3e50; /* Dark blue-grey for sidebar */
+    --topbar-bg: #ffffff;
+    --body-bg: #f4f7f6; /* Light, subtle background */
+    --card-bg: #ffffff;
+    --text-color-dark: #9b9999;
+    --text-color-light: #f0f0f0;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+    --shadow-deep: rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    background-color: var(--body-bg);
+    overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+}
+a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-blue-dark);
+}
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color-light);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px var(--shadow-medium);
+    transition: all 0.3s ease; /* For potential collapse functionality */
+}
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.sidebar-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+    background-color: #fff; /* Ensure logo stands out */
+    padding: 5px;
+}
+
+.sidebar-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-green); /* Branding green */
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 5px solid transparent; /* For active state highlight */
+}
+
+.sidebar-nav a i {
+    margin-right: 15px;
+    font-size: 1.1rem;
+    width: 20px; /* Fixed width for icon alignment */
+    text-align: center;
+}
+.sidebar-nav a .nav-count {
+    background-color: var(--primary-green);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: auto; /* Push to the right */
+    font-weight: 600;
+}
+
+.sidebar-nav li.active a,
+.sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--primary-green);
+    border-left-color: var(--primary-green);
+}
+
+.sidebar-nav li.active a .nav-count {
+    background-color: #fff;
+    color: var(--primary-green);
+}
+
+/* --- Top Bar / Header --- */
+.topbar {
+    grid-area: topbar;
+    background-color: var(--topbar-bg);
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.sidebar-toggle-btn {
+    font-size: 1.5rem;
+    color: var(--text-color-dark);
+    margin-right: 20px;
+    display: none; /* Hidden by default on desktop, shown on mobile */
+}
+.manage_school_dashboard{
+     display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "sidebar topbar"
+        "sidebar main";
+    min-height: 100vh;
+}
+.topbar {
+    grid-area: topbar;
+    background-color: var(--topbar-bg);
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+.sidebar-toggle-btn {
+    font-size: 1.5rem;
+    color: var(--text-color-dark);
+    margin-right: 20px;
+    display: none; /* Hidden by default on desktop, shown on mobile */
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-right: auto; /* Push actions to the right */
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Space between search and profile */
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    padding: 8px 15px;
+    background-color: var(--body-bg);
+    transition: all 0.3s ease;
+}
+.filter_search{
+     position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    padding: 8px 15px;
+    background-color: var(--body-bg);
+    transition: all 0.3s ease;
+    width: 40%;
+    float: right;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.filter_search input{
+     border: none;
+    background: transparent;
+    outline: none;
+    padding-right: 25px;
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+}
+.filter_search i{
+      position: absolute;
+    right: 15px;
+    color: #999;
+}
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    padding-right: 25px;
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+}
+
+.search-box i {
+    position: absolute;
+    right: 15px;
+    color: #999;
+}
+
+.search-box:focus-within {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+.user-profile i.bi-person-circle{
+    font-size: 2.5em;
+    color: greenyellow;
+    position: relative;
+    cursor: pointer;
+}
+.user-profile i.fa-bell {
+    font-size: 2.3rem;
+    color: #666;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-profile .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545; /* Red for notifications */
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+    min-width: 20px;
+    text-align: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-green);
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+.user-profile span {
+    font-weight: 500;
+    color: var(--text-color-dark);
+}
+.main-content-wrapper {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px; /* Space between sections */
+    overflow-y: auto; /* Enable scrolling for content if it overflows */
+}
+/* Add this to your existing CSS file or in a <style> tag in the <head> */
+.hidden-school-row {
+    display: none;
+}
+/* Quick Actions / Action Grid */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.action-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.action-card i {
+    font-size: 3.5rem;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+.action-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin-bottom: 10px;
+}
+
+.action-card p {
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Allow paragraph to grow */
+}
+
+.action-card .action-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.action-card .action-link i {
+    font-size: 0.9rem;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+    color: var(--primary-blue); /* Ensure icon color is consistent */
+}
+
+.action-card .action-link:hover i {
+    transform: translateX(5px);
+}
+/* --- Base Styles & Container --- */
+.dashboard-section {
+    padding: 30px 0;
+    background-color: #f8f9fa; /* Light background for the section */
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+.dashboard-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #16df31;
+    font-size: 2.2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.dashboard-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #007bff; /* Primary color underline */
+    border-radius: 2px;
+}
+
+.styled-table-container {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners on table */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow for the table itself */
+    border: 1px solid #e9ecef;
+}
+
+/* --- Table Specific Styles --- */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove default table spacing */
+    margin: 0; /* Remove default margin */
+    /* Remove default Bootstrap table-bordered if you want cleaner lines */
+    border: none !important;
+}
+
+.styled-table thead.table-dark {
+    background-color: #212529; /* Darker header */
+    color: #fff;
+    border-bottom: none; /* Remove bottom border from Bootstrap */
+}
+
+.styled-table th {
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border: none; /* Remove th borders */
+    vertical-align: middle;
+}
+
+.styled-table tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+    border-bottom: 1px solid #e9ecef; /* Lighter row separator */
+}
+
+.styled-table tbody tr:last-child {
+    border-bottom: none; /* No border on the last row */
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+    background-color: #fefefe; /* Very subtle stripe */
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9; /* Another subtle stripe */
+}
+
+/* --- Hover Effect for Rows --- */
+.styled-table tbody tr:hover {
+    background-color: #e2f2ff; /* Light blue on hover */
+    transform: scale(1.005); /* Slightly grow the row */
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.15); /* Subtle blue shadow on hover */
+    z-index: 1; /* Bring hovered row slightly forward */
+    position: relative; /* Needed for z-index to work */
+}
+
+.styled-table td {
+    padding: 12px 20px;
+    vertical-align: middle;
+    border: none; /* Remove td borders */
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+/* --- Action Buttons Styling --- */
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    outline: none; /* Remove outline on focus */
+}
+
+.action-btn:hover {
+    transform: translateY(-2px); /* Lift button on hover */
+}
+
+.edit-btn {
+    color: #007bff; /* Primary blue */
+}
+
+.edit-btn:hover {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.delete-btn {
+    color: #dc3545; /* Danger red */
+}
+
+.delete-btn:hover {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+/* --- Status Badges (Example for SchoolStatus) --- */
+/* Assuming SchoolStatus might be 'Activated', 'Pending', 'Rejected' */
+.styled-table td:nth-child(7) { /* Target the Status column (7th td) */
+    font-weight: 600;
+}
+.styled-table td:nth-child(7):contains("Activated") {
+    color: #28a745; /* Green */
+}
+.styled-table td:nth-child(7):contains("Pending") {
+    color: #ffc107; /* Yellow */
+}
+.styled-table td:nth-child(7):contains("Rejected") {
+    color: #dc3545; /* Red */
+}
+/* Note: :contains is a jQuery pseudo-selector. For pure CSS, you'd need classes from PHP:
+   e.g., <td class="status-activated">Activated</td>
+*/
+
+/* --- Footer Actions (View All / Show Less Buttons) --- */
+.table-footer-actions {
+    padding: 20px;
+    background-color: #f1f3f5; /* Light background for footer */
+    border-top: 1px solid #e9ecef;
+    border-bottom-left-radius: 8px; /* Match table container radius */
+    border-bottom-right-radius: 8px; /* Match table container radius */
+    display: flex; /* Use flexbox for button alignment */
+    justify-content: center; /* Center buttons */
+    gap: 15px; /* Space between buttons */
+}
+
+.custom-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Pill shape */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Remove underline from links */
+}
+
+.custom-btn:hover {
+    transform: translateY(-3px); /* Lift button on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary.custom-btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+.btn-primary.custom-btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-secondary.custom-btn {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+.btn-secondary.custom-btn:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}
+
+/* --- Responsive Adjustments (Basic) --- */
+@media (max-width: 768px) {
+    .dashboard-section h2 {
+        font-size: 1.8rem;
+    }
+    .styled-table th, .styled-table td {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+    .action-btn {
+        font-size: 1rem;
+        margin: 0 2px;
+    }
+    .table-footer-actions {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 10px;
+    }
+    .custom-btn {
+        width: 80%; /* Make buttons wider */
+        margin: 0 auto; /* Center buttons */
+    }
+}

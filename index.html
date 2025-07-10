@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYACADEMIA | Prioritizing education</title>
+    <link rel="icon" type="image/x-icon" href="./images/sky_icon.png">
+    <link rel="stylesheet" href="./CSS/index.css?v=7.1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-logo">
+        <a href="./index.html">
+            <img src="./images/sky_icon.png" alt="SkyAcademia Logo" class="logo">
+        </a>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+        <a href="#" class="nav-link active">Home</a> 
+        <a href="#pt_1" class="nav-link">Services</a>
+        <a href="#" class="nav-link">Sky ai</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact us</a>
+    </div>
+      <div class="nav-auth">
+    <a href="./Frontend/signup_login.html" class="auth-button login-button">Login</a>
+    <a href="./Frontend/signup_login.html" class="auth-button signup-button">Signup</a>
+  </div>
+</nav>
+<div class="main-content">
+    <div class="part_1" id="pt_1]">
+        <section class="hero-section">
+            <h1>Welcome to SkyAcademia – Your Future, Prioritized.</h1>
+            <p class="tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <button id="registerSchool">REGISTER SCHOOL <i class="bi bi-arrow-bar-right"></i></button>
+        </section>
+    </div>
+    <div class="part_2">
+    <h3>Our services</h3>
+    <div class="service-grid">
+        <section>
+            <h4>Record marks</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iste vitae molestias amet repellendus, necessitatibus dignissimos eius facilis obcaecati est, ratione, beatae odio porro deleniti itaque laudantium sequi similique quidem?</p>
+        </section>
+        <section>
+            <h4>Attendance tracking</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos mollitia repellendus libero eius animi illum optio quia a. Amet qui, quos ea porro itaque iste tempore ipsum incidunt expedita aperiam.</p>
+        </section>
+        <section>
+            <h4>Discpline track</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit fugit saepe ab commodi debitis et facere magnam, quisquam culpa quo sit ex excepturi ducimus porro odio vitae tenetur deserunt voluptates?</p>
+        </section>
+        <section>
+            <h4>parents conferencing</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque id natus autem blanditiis nihil, animi eaque eum molestias veritatis. Porro repellendus veniam neque est molestiae numquam possimus, molestias iusto eum!</p>
+        </section>
+    </div>
+</div>
+<div class="part_3">
+    <h2>Sky ai</h2>
+    <section>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum deleniti ex eos tenetur consectetur unde ullam natus quidem velit? Odit, quibusdam ut? Voluptate animi eos odio recusandae rerum harum facilis.</p>
+        <img src="../SKYACADEMIA/images/onee.jpg" alt="">
+    </section>
+</div>
+    </div>
+    <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <a href="./index.html">
+                <img src="./images/sky_icon.png" alt="SkyAcademia Logo" class="footer-logo">
+            </a>
+            <p class="brand-tagline">Your Future, Prioritized.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#" class="footer-link">Home</a></li>
+                <li><a href="#" class="footer-link">Services</a></li>
+                <li><a href="#" class="footer-link">Sky AI</a></li>
+                <li><a href="#" class="footer-link">About Us</a></li>
+                <li><a href="#" class="footer-link">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Get in Touch</h4>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Education Lane, Learning City, Country</p>
+            <p><i class="fas fa-envelope"></i> info@skyacademia.com</p>
+            <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
+        </div>
+
+        <div class="footer-social">
+            <h4>Connect With Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> SkyAcademia. All rights reserved.</p>
+        <p><a href="#" class="footer-policy-link">Privacy Policy</a> | <a href="#" class="footer-policy-link">Terms of Service</a></p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+<script>
+       const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const navAuth = document.querySelector('.nav-auth'); 
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        menuToggle.classList.toggle('open');
+
+        // 
+        if (window.innerWidth <= 768) {
+            navAuth.classList.toggle('show-auth');
+        }
+
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && !navAuth.contains(e.target)) {
+            navLinks.classList.remove('show');
+            menuToggle.classList.remove('open');
+            navAuth.classList.remove('show-auth');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+
+</script>
+<script>
+    const button = document.getElementById('registerSchool');
+
+
+    button.addEventListener('click', function() {
+        window.location.href = './Frontend/register_school.html';
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register School</title>
+    <link rel="stylesheet" href="../CSS/register_school.css">
+    <link rel="shortcut icon" href="../images/sky_icon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="register_school">
+        <form action="../Backend/register_school.php" method="POST">
+            <h2>Register Your School</h2>
+            <fieldset>
+                <label>School Name:</label>
+                <input type="text" name="school_name" required><br>
+
+                <label>School Email:</label>
+                <input type="email" name="school_email" required><br>
+<label for="phone number:">Phone number:</label>
+<input 
+  type="text" 
+  name="phone_number" 
+  pattern="(72|73|77|78|79)[0-9]{7}" 
+  placeholder="79xxxxxxx" 
+  title="Must be 9 digits (e.g., 796404883)" 
+  required>
+<br>
+
+                <label>Contact Person Name:</label>
+                <input type="text" name="contact_person" required><br>
+
+                <label>Area of Location:</label>
+                <input type="text" name="area_location" required><br>
+
+                <button type="submit">Submit Registration</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
